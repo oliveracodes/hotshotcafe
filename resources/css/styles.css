@@ -1,0 +1,594 @@
+/*
+COLORS:
+        text: #404040;
+        redFriend: #C0564B;
+        grayFriend: #8F8F8F;
+        darkGray: #626266;
+        lightGray: #ddd;
+*/
+
+
+
+/* ----- BASIC SETUP ----- */
+
+::-moz-selection {
+  color: #fff;
+  background: #C0564B;
+}
+
+::selection {
+  color: #fff;
+  background: #C0564B;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+ }
+ 
+ html,
+ body {
+   color: #404040;
+   font-family: 'Orbitron', 'Arial', sans-serif;
+   font-weight: 400;
+   font-size: 20px;
+   text-rendering: optimizeLegibility;
+   overflow-x: hidden;
+   cursor: default;
+ }
+
+ /* clearfix clears the float after the element */
+.clearfix { zoom: 1; }
+.clearfix:after {
+  content: ".";
+  clear: both;
+  display: block;
+  height: 0;
+  visibility: hidden;
+}
+ 
+
+ 
+ /* ----- REUSABLE COMPONENTS ----- */
+ 
+ .row {
+   max-width: 1140px;
+   margin: 0 auto;
+ }
+
+ section {
+  padding: 80px 0; /* in order to preserve the background color we need to make sure that the whitespace is inside the boxes */
+}
+
+.box {
+  padding: 1%;
+}
+
+
+
+ /* ----- HEADINGS ----- */
+
+.display-1, .display-2, .display-3, .display-white {
+  text-transform: uppercase;
+}
+
+.display-1 {
+  letter-spacing: 1px;
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #fff;
+  font-size: 160%;
+  word-spacing: 4px;
+}
+
+.display-2 {
+  letter-spacing: 1px;
+  font-size: 180%;
+  word-spacing: 2px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.display-3 {
+  font-size: 110%;
+  margin-bottom: 15px;
+  display: inline-block;
+}
+
+.display-2:after {
+  display: block;
+  height: 2px;
+  background-color: #C0564B;
+  content: " "; /* whenever we do an after pseudo-class we have to specify its content, so in this case we don't want any words to appear */
+  width: 100px;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+.display-white {
+  letter-spacing: 1px;
+  font-size: 180%;
+  word-spacing: 2px;
+  text-align: left;
+  margin-bottom: 30px;
+  color: #fff;
+  padding-bottom: 22px;
+}
+
+
+
+/* ----- PARAGRAPHS ----- */
+
+.long-copy {
+  line-height: 145%;
+  width: 80%; /* the remaining 30% are distributed to both sides */
+  margin-left: 10%; /* that's why we define margin of 15%, 15% left and 15% right are 30% and plus 70% of the width it's 100% */
+  text-align: center;
+}
+
+.box p {
+  font-size: 90%;
+  line-height: 145%;
+  text-align: justify;
+}
+
+
+
+/* ----- ICONS ----- */
+
+.icon-big {
+  font-size: 150%;
+  display: inline-block;
+  color: #C0564B;
+  margin-right: 15px;
+}
+
+.icon-small {
+  display: inline-block;
+  width: 30px; /* so we can align them */
+  text-align: center;
+  color: #8F8F8F;
+  font-size: 120%;
+  margin-right: 10px;
+
+  /* way to align text and icons */
+  line-height: 120%;
+  vertical-align: middle;
+  margin-top: -5px;
+
+}
+
+
+
+/* ----- LINKS ----- */
+
+a:link,
+a:visited {
+  color: #C0564B;
+  text-decoration: none;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+a:hover,
+a:active {
+  color: #626266;
+}
+
+
+
+/* NAVIGATION */
+
+.logo {
+  height: 100px;
+  width: auto; /* determined automatically, based on the height */
+  float: left;
+  margin-top: 20px;
+}
+
+.logo-black {
+  height: 50px;
+  width: auto;
+  float: left;
+  margin: 5px 0;
+  display: none;
+}
+
+
+
+/* ----- MAIN NAVIGATION ----- */
+
+.main-nav {
+  float: right;
+  list-style: none;
+  margin-top: 55px;
+}
+
+.main-nav li {
+  display: inline-block;
+  margin-left: 40px;
+}
+
+.main-nav li a:link,
+.main-nav li a:visited {
+  padding: 8px 0;
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 90%; /* 90% = 18px; we want it to be 18px so we divide 18 by 20 (the font size in the html tag) and  then we multiply it by 100 */
+  border-bottom: 2px solid transparent;
+  -webkit-transition: border-bottom 0.2s;
+  transition: border-bottom 0.2s;
+}
+
+.main-nav li a:hover,
+.main-nav li a:active {
+  border-bottom: 2px solid #C0564B;
+}
+
+
+
+/* ----- STICKY NAVIGATION ----- */
+
+.sticky {
+  /* stays always in one place */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.9);
+  -webkit-box-shadow: 0 2px 2px #8F8F8F;
+          box-shadow: 0 2px 2px #8F8F8F;
+  z-index: 9999; /* defines the stacking of elements in the z-axis; 9999 is the maximum value and the element with sticky class will be always on the top */
+}
+
+.sticky .main-nav { margin-top: 18px; }
+
+.sticky .main-nav li a:link,
+.sticky .main-nav li a:visited {
+  padding: 8px 0;
+  color: #404040;
+}
+
+.sticky .logo { display: none; }
+.sticky .logo-black {
+  display: block;
+}
+
+
+
+/* ----- MOBILE NAVIGATION ----- */
+
+.mobile-nav-icon {
+  float: right;
+  margin-top: 30px;
+  cursor: pointer;
+  display: none;
+}
+
+.mobile-nav-icon i {
+  font-size: 150%;
+  color: #fff;
+}
+
+
+
+ /* ----- HEADER ----- */
+
+ header {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.5))), url(../img/background-min.jpeg);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../img/background-min.jpeg); /* puts linear gradient on top of the image, it's like using two background images at the same time, it takes two colors for the gradient - from one color to another */
+  background-size: cover; /* to see the whole image */
+  background-position: center;
+  height: 100vh; /* 100% of the viewport height */
+  position: relative;
+  background-attachment: fixed; /* the background image stays fixed, always in the same place, so we can scroll over it */
+}
+
+.hero-text-box {
+  /* padding-top: 7%; */
+  position: absolute;
+  width: 1140px;
+  top: 75%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%); /* translates the element; half of its width and of its height up and to the left */
+}
+
+.slider {
+  width: 100%;
+  margin: 0 auto;
+}
+
+blockquote {
+  letter-spacing: 1px;
+  color: #fff;
+  font-size: 240%;
+  word-spacing: 4px;
+  padding: 5%;
+  font-style: italic;
+  position: relative;
+}
+
+blockquote:before {
+  font-family: "FontAwesome";
+  content: "\f10d";
+  font-size: 50%;
+  display: block;
+  position: absolute;
+  top: 35px;
+  left: 25px;
+}
+
+cite {
+  font-size: 90%;
+  margin-top: 25px;
+  display: block;
+  text-align: right;
+}
+
+
+
+/* ----- ABOUT SECTION ----- */
+
+.section-about .long-copy {
+  margin-bottom: 30px;
+  text-align: center;
+  line-height: 120%;
+  letter-spacing: 1px;
+}
+
+
+
+/* ----- COFFEE SECTION ----- */
+
+.section-coffee {
+  padding: 0; /* to override the padding: 80px 0; for the section elements */
+}
+
+.coffee-showcase {
+  list-style: none;
+  width: 100%;
+}
+
+.coffee-showcase li {
+  display: block;
+  float: left;
+  width: 25%;
+}
+
+.coffee-photo {
+  width: 100%; /* this element has the exact width of its parent element which is meals-showcase li */
+  margin: 0;
+  overflow: hidden; /* so the scaled images won't overflow the container */
+  background-color: #000; /* black container so the images show darker with opacity */
+}
+
+.coffee-photo img {
+  opacity: 0.7;
+  width: 100%;
+  height: auto;
+  -webkit-transform: scale(1.15);
+          transform: scale(1.15); /* zooms in the image, it scales it and it removes the whitespace between the two uls, but it also overflow the container */
+  -webkit-transition: opacity 0.5s, -webkit-transform 0.5s;
+  transition: opacity 0.5s, -webkit-transform 0.5s;
+  transition: transform 0.5s, opacity 0.5s;
+  transition: transform 0.5s, opacity 0.5s, -webkit-transform 0.5s;
+}
+
+.coffee-photo img:hover {
+  opacity: 1;
+  -webkit-transform: scale(1.03);
+          transform: scale(1.03); /* we don't scale it back to 1 because then the whitespace between the uls will show */
+}
+
+
+
+/* ----- LOCATIONS SECTION ----- */
+
+.section-locations .box img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 15px;
+}
+
+.location-feature {
+  margin-bottom: 5px;
+}
+
+
+
+/* ----- CONTACT FORM ----- */
+
+.section-contact {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.6)), to(rgba(0, 0, 0, 0.6))), url(../img/contact-min.jpeg);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../img/contact-min.jpeg); /* puts linear gradient on top of the image, it's like using two background images at the same time, it takes two colors for the gradient - from one color to another */
+  background-size: cover; /* to see the whole image */
+  background-position: center;
+  position: relative;
+  background-attachment: fixed; /* the background image stays fixed, always in the same place, so we can scroll over it */
+}
+
+.contact-form {
+  width: 60%;
+  /* margin: 0 auto; */
+}
+
+label {
+  color: #fff;
+}
+
+input[type=text],
+input[type=email],
+select,
+textarea {
+  width: 100%;
+  padding: 7px;
+  border-radius: 0;
+}
+
+
+
+/* ----- BUTTONS ----- */
+
+input[type=submit] {
+  display: inline-block;
+  padding: 10px 30px;
+  font-weight: 300;
+  text-decoration: none;
+  border-radius: 0;
+  color: #404040;
+  background-color: #fff;
+  border: 1px solid #fff;
+  margin-right: 15px;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+input[type=submit]:hover,
+input[type=submit]:active {
+  color: #fff;
+  background-color: #C0564B;
+  border: 1px solid #C0564B;
+}
+
+.send-btn {
+  display: inline-block;
+  text-decoration: none;
+  border-radius: 0;
+  color: #404040;
+  background-color: #fff;
+  border: 1px solid #fff;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.send-btn:hover,
+.send-btn:active {
+  color: #fff;
+  background-color: #C0564B;
+  border: 1px solid #C0564B;
+  -webkit-animation: horizontal_7402 2.72s ease infinite;
+          animation: horizontal_7402 2.72s ease infinite;
+  -webkit-transform-origin: 50% 50%;
+          transform-origin: 50% 50%;
+}
+
+@-webkit-keyframes horizontal_7402 {
+  0% { -webkit-transform:translate(0,0); transform:translate(0,0) }
+  4.41177% { -webkit-transform:translate(5px,0); transform:translate(5px,0) }
+  8.82353% { -webkit-transform:translate(0,0); transform:translate(0,0) }
+  13.23529% { -webkit-transform:translate(5px,0); transform:translate(5px,0) }
+  17.64706% { -webkit-transform:translate(0,0); transform:translate(0,0) }
+  22.05882% { -webkit-transform:translate(5px,0); transform:translate(5px,0) }
+  26.47059% { -webkit-transform:translate(0,0); transform:translate(0,0) }
+  100% { -webkit-transform:translate(0,0); transform:translate(0,0) }
+}
+
+@keyframes horizontal_7402 {
+  0% { -webkit-transform:translate(0,0); transform:translate(0,0) }
+  4.41177% { -webkit-transform:translate(5px,0); transform:translate(5px,0) }
+  8.82353% { -webkit-transform:translate(0,0); transform:translate(0,0) }
+  13.23529% { -webkit-transform:translate(5px,0); transform:translate(5px,0) }
+  17.64706% { -webkit-transform:translate(0,0); transform:translate(0,0) }
+  22.05882% { -webkit-transform:translate(5px,0); transform:translate(5px,0) }
+  26.47059% { -webkit-transform:translate(0,0); transform:translate(0,0) }
+  100% { -webkit-transform:translate(0,0); transform:translate(0,0) }
+}
+
+
+
+/* ----- FOOTER ----- */
+
+footer {
+  background-color: #000;
+  padding: 50px;
+  font-size: 80%;
+}
+
+.footer-nav {
+  list-style: none;
+  float: left;
+}
+
+.social-links {
+  list-style: none;
+  float: right;
+}
+
+.footer-nav li,
+.social-links li {
+ display: inline-block;
+ margin-right: 20px;
+}
+
+.footer-nav li:last-child,
+.social-links li:last-child {
+  margin-right: 0;
+}
+
+.footer-nav li a:link,
+.footer-nav li a:visited,
+.social-links li a:link,
+.social-links li a:visited {
+  text-decoration: none;
+  border: 0;
+  color: #8F8F8F;
+  -webkit-transition: color 0.2s;
+  transition: color 0.2s;
+}
+
+.footer-nav li a:hover,
+.footer-nav li a:active {
+  color: #ddd;
+}
+
+.social-links li a:link,
+.social-links li a:visited {
+  font-size: 150%;
+}
+
+.fa-facebook-square,
+.fa-twitter-square,
+.fa-google-plus-square {
+  -webkit-transition: color 0.2s;
+  transition: color 0.2s;
+}
+
+.fa-facebook-square:hover {
+  color: #3b5998;
+}
+
+.fa-twitter-square:hover {
+  color: #00aced;
+}
+
+.fa-google-plus-square:hover {
+  color: #dd4b39;
+}
+
+footer p {
+  color: #8F8F8F;
+  text-align: center;
+  margin-top: 20px;
+}
+
+footer span {
+  color: #C0564B;
+}
+
+footer a:link,
+footer a:visited {
+  text-decoration: none;
+  border: 0;
+  color: #8F8F8F;
+  -webkit-transition: color 0.2s;
+  transition: color 0.2s;
+}
+
+footer a:hover,
+footer a:active {
+  color: #ddd;
+}
